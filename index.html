@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Assistant - Indian Election System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <span>🗳️</span> ElectionAssit
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#register" class="nav-link">Register</a></li>
+        </ul>
+        <div class="nav-cta">
+            <div id="auth-container">
+                <button id="login-btn" class="btn btn-outline" style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); padding: 8px 20px;">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google">
+                    Login
+                </button>
+                <div id="user-profile" style="display: none; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 0.4rem 1rem; border-radius: 50px;">
+                    <img id="user-photo" src="" alt="Profile" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--white);">
+                    <div style="text-align: left;">
+                        <p id="user-name" style="font-size: 0.75rem; font-weight: 600; margin: 0; line-height: 1.2; color: var(--white);"></p>
+                    </div>
+                    <button id="logout-btn" class="btn" style="padding: 4px 10px; font-size: 0.65rem; background: var(--secondary-color);">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h1>Election Assistant - India</h1>
+            <p>Your interactive guide to the Indian democratic process</p>
+            <div class="header-actions">
+                <a href="https://voters.eci.gov.in" target="_blank" class="btn btn-primary">🔗 NVSP Registration</a>
+                <a href="https://eci.gov.in" target="_blank" class="btn btn-outline">🔗 Election Commission</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Personalized Flow Section (WOW Feature) -->
+        <section class="personalized-flow" id="voter-type">
+            <h2>Personalized Voting Guide</h2>
+            <p>Tell us who you are to get a custom experience.</p>
+            <div class="flow-options">
+                <div class="flow-card" onclick="setVoterType('first-time')">
+                    <div class="flow-icon">🆕</div>
+                    <h3>First-Time Voter</h3>
+                    <p>I'm 18+ and need to register for the first time.</p>
+                    <button class="btn btn-primary">Start Registration Guide</button>
+                </div>
+                <div class="flow-card" onclick="setVoterType('registered')">
+                    <div class="flow-icon">✅</div>
+                    <h3>Already Registered</h3>
+                    <p>I have my Voter ID and want to check my booth.</p>
+                    <button class="btn btn-primary">Check Polling Status</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro" id="roadmap-intro">
+            <h2>General Elections 2026 Roadmap</h2>
+            <p>Your interactive guide to navigating the world's largest democratic process. Explore the phases, prepare your checklist, and make your vote count.</p>
+            <img src="https://img.freepik.com/free-vector/indian-election-background-with-voting-hand_1017-31358.jpg" alt="Indian Election Voting Process Illustration" class="intro-img">
+        </section>
+
+        <!-- Timeline Overview -->
+        <section id="services" class="roadmap-overview">
+            <h3><span>📅</span> Expected Timeline (2026 Cycle)</h3>
+            <div class="date-list">
+                <div class="date-item">
+                    <strong>Early 2026</strong>
+                    Voter List Revision
+                </div>
+                <div class="date-item">
+                    <strong>March 2026</strong>
+                    Election Notification
+                </div>
+                <div class="date-item">
+                    <strong>April-May 2026</strong>
+                    Multi-Phase Polling
+                </div>
+                <div class="date-item">
+                    <strong>June 2026</strong>
+                    Counting & Results
+                </div>
+            </div>
+        </section>
+
+        <div class="timeline">
+            <!-- Step 1 -->
+            <div class="step left" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>1. Voter Registration (NVSP)</h3>
+                    <p>Get your EPIC card ready.</p>
+                    <div class="details">
+                        <p>To vote in India, you must be 18+ and registered in the electoral roll. Use the Voter Helpline App or NVSP portal.</p>
+                        <ul>
+                            <li>Fill Form 6 for new registration.</li>
+                            <li>Verify your name in the Electoral Roll.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step right" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>2. Model Code of Conduct</h3>
+                    <p>Ensuring free and fair elections.</p>
+                    <div class="details">
+                        <p>The ECI implements the MCC from the date of election announcement to maintain a level playing field.</p>
+                        <ul>
+                            <li><strong>Restrictions:</strong> No new projects or policy announcements by the govt.</li>
+                            <li><strong>Monitoring:</strong> Static Surveillance Teams (SST) and Flying Squads.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step left" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>3. Nominations & Scrutiny</h3>
+                    <p>Candidates file their papers.</p>
+                    <div class="details">
+                        <p>Candidates submit affidavits regarding their assets, criminal records, and educational qualifications.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step right" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>4. Campaigning & Rallies</h3>
+                    <p>Reaching out to the masses.</p>
+                    <div class="details">
+                        <p>Political parties release manifestos and hold rallies. Campaigning stops 48 hours before the end of polling.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step left" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>5. Polling Day (EVM & VVPAT)</h3>
+                    <p>Casting your vote securely.</p>
+                    <div class="details">
+                        <p>India uses Electronic Voting Machines (EVM) with Voter Verifiable Paper Audit Trail (VVPAT) for transparency.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step right" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>6. Counting of Votes</h3>
+                    <p>The verdict of the people.</p>
+                    <div class="details">
+                        <p>Votes are counted at designated centers under tight security and in the presence of candidates' agents.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step left" onclick="toggleStep(this)">
+                <div class="content">
+                    <h3>7. Government Formation</h3>
+                    <p>A new term begins.</p>
+                    <div class="details">
+                        <p>The party or coalition with a majority (272+ seats in Lok Sabha) is invited by the President to form the government.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="register" class="checklist-section">
+            <h2 style="color: var(--primary-color);">Indian Voter Checklist</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Be a responsible citizen. Ensure your vote counts.</p>
+            <div class="checklist-grid">
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span>Check your name in the Voter List at voters.eci.gov.in</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span>Download your Digital Voter ID (e-EPIC)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span>Locate your Polling Booth using the Voter Helpline App</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span>Carry your EPIC card or alternative ID to the booth</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span>Know your candidates using the 'Know Your Candidate' (KYC) app</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="resources-section">
+            <h2>Official ECI Resources</h2>
+            <div class="resource-cards">
+                <a href="https://voters.eci.gov.in" target="_blank" class="resource-card">
+                    <h4>Voters' Service Portal</h4>
+                    <p>Official ECI portal for registration and EPIC services.</p>
+                </a>
+                <a href="https://eci.gov.in" target="_blank" class="resource-card">
+                    <h4>ECI Official Website</h4>
+                    <p>Latest notifications, schedules, and results from the Commission.</p>
+                </a>
+                <a href="https://affidavit.eci.gov.in" target="_blank" class="resource-card">
+                    <h4>Candidate Affidavits</h4>
+                    <p>Check the background, assets, and records of candidates.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="quiz-section" id="quiz">
+            <h2>Test Your Knowledge</h2>
+            <div class="quiz-container">
+                <p class="quiz-question" id="question">What is the minimum age to vote in Indian General Elections?</p>
+                <div class="quiz-options" id="options">
+                    <button class="btn btn-outline" onclick="checkAnswer(true)">18 Years</button>
+                    <button class="btn btn-outline" onclick="checkAnswer(false)">21 Years</button>
+                </div>
+                <p id="feedback" style="margin-top: 2rem; font-weight: 600; min-height: 1.5rem; transition: opacity 0.3s;"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Election Assistant India. Information based on ECI guidelines.</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">Empowering Indian citizens through digital information.</p>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget">
+        <button id="ai-chat-toggle" aria-label="Open AI assistant">💬</button>
+        <div id="ai-chat-window" class="chat-box">
+            <div class="chat-header">
+                <h4>AI Election Assistant</h4>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <button id="voice-toggle" class="icon-btn" aria-label="Toggle Voice Response" title="Toggle Voice Response">🔊</button>
+                    <button id="close-chat" aria-label="Close chat" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+                </div>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message ai">Hello! I'm your AI Election Assistant. How can I help you today?</div>
+            </div>
+            <div id="typing-indicator" class="message ai" style="display: none;">Thinking...</div>
+            <div id="listening-indicator" class="message user" style="display: none; background: var(--accent-color);">Listening... 🎤</div>
+            <div class="quick-actions">
+                <button onclick="askAI('How to register to vote?')">✅ Register</button>
+                <button onclick="askAI('How to vote in India?')">🗳️ How to Vote</button>
+                <button onclick="askAI('Check my eligibility')">👤 Eligibility</button>
+                <button onclick="askAI('Explain election process')">📋 Process</button>
+            </div>
+            <form id="chat-form" class="chat-input-area">
+                <button type="button" id="mic-btn" class="chat-send-btn" style="background: var(--accent-color);" aria-label="Start Voice Input">🎤</button>
+                <input type="text" id="chat-input" placeholder="Ask about voting..." autocomplete="off">
+                <button type="submit" class="chat-send-btn" aria-label="Send message">➤</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = { 
+            apiKey: "AIzaSyDF2xop9cfw8nUJyZ_AxxApJfeMtVPy01k", 
+            authDomain: "device-streaming-5068d5b1.firebaseapp.com", 
+            projectId: "device-streaming-5068d5b1", 
+            storageBucket: "device-streaming-5068d5b1.firebasestorage.app", 
+            messagingSenderId: "545693971459", 
+            appId: "1:545693971459:web:7da0f4d1f12f685e51ca36" 
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userProfile = document.getElementById('user-profile');
+        const userName = document.getElementById('user-name');
+        const userPhoto = document.getElementById('user-photo');
+
+        loginBtn.addEventListener('click', async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                console.error("Login failed:", error.message);
+                alert("Login failed. Please try again.");
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error("Logout failed:", error.message);
+            }
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginBtn.style.display = 'none';
+                userProfile.style.display = 'flex';
+                userName.textContent = user.displayName;
+                userPhoto.src = user.photoURL || 'https://via.placeholder.com/32';
+                localStorage.setItem('user', JSON.stringify({
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }));
+            } else {
+                loginBtn.style.display = 'flex';
+                userProfile.style.display = 'none';
+                localStorage.removeItem('user');
+            }
+        });
+    </script>
+
+    <script>
+        function toggleStep(element) {
+            element.classList.toggle('active');
+            const allSteps = document.querySelectorAll('.step');
+            allSteps.forEach(step => {
+                if (step !== element) {
+                    step.classList.remove('active');
+                }
+            });
+            if (element.classList.contains('active')) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function checkAnswer(isCorrect) {
+            const feedback = document.getElementById('feedback');
+            feedback.style.opacity = "0";
+            setTimeout(() => {
+                if (isCorrect) {
+                    feedback.textContent = "🎉 Correct! Voter registration is the essential first step.";
+                    feedback.style.color = "#4ade80";
+                } else {
+                    feedback.textContent = "❌ Not quite. You must register to vote before you can participate!";
+                    feedback.style.color = "#f87171";
+                }
+                feedback.style.opacity = "1";
+            }, 200);
+        }
+    </script>
+    <script src="ai-assistant.js"></script>
+</body>
+</html>
