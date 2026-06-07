@@ -276,64 +276,7 @@
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        const firebaseConfig = { 
-            apiKey: "AIzaSyDF2xop9cfw8nUJyZ_AxxApJfeMtVPy01k", 
-            authDomain: "device-streaming-5068d5b1.firebaseapp.com", 
-            projectId: "device-streaming-5068d5b1", 
-            storageBucket: "device-streaming-5068d5b1.firebasestorage.app", 
-            messagingSenderId: "545693971459", 
-            appId: "1:545693971459:web:7da0f4d1f12f685e51ca36" 
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-
-        const loginBtn = document.getElementById('login-btn');
-        const logoutBtn = document.getElementById('logout-btn');
-        const userProfile = document.getElementById('user-profile');
-        const userName = document.getElementById('user-name');
-        const userPhoto = document.getElementById('user-photo');
-
-        loginBtn.addEventListener('click', async () => {
-            try {
-                await signInWithPopup(auth, provider);
-            } catch (error) {
-                console.error("Login failed:", error.message);
-                alert("Login failed. Please try again.");
-            }
-        });
-
-        logoutBtn.addEventListener('click', async () => {
-            try {
-                await signOut(auth);
-            } catch (error) {
-                console.error("Logout failed:", error.message);
-            }
-        });
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                loginBtn.style.display = 'none';
-                userProfile.style.display = 'flex';
-                userName.textContent = user.displayName;
-                userPhoto.src = user.photoURL || 'https://via.placeholder.com/32';
-                localStorage.setItem('user', JSON.stringify({
-                    name: user.displayName,
-                    email: user.email,
-                    photo: user.photoURL
-                }));
-            } else {
-                loginBtn.style.display = 'flex';
-                userProfile.style.display = 'none';
-                localStorage.removeItem('user');
-            }
-        });
-    </script>
+    <script type="module" src="supabase-auth.js"></script>
 
     <script>
         function toggleStep(element) {
